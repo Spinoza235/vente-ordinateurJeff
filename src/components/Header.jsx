@@ -25,7 +25,7 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-          <NavLink to="/" className="flex items-center hover:opacity-80 transition-opacity">
+          <NavLink to="/" className="flex items-center  transition-opacity">
       <img 
         src="/logo.png" 
         alt="Logo de l'entreprise" 
