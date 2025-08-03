@@ -39,7 +39,7 @@ const Footer = () => {
             {/* Contact */}
             <div>
               <h2 className="text-lg font-semibold text-sky-500/90">Contact</h2>
-              <p className="mt-2 text-gray-400">Email : support@hopebusiness.com</p>
+              <p className="mt-2 text-gray-400">Email : hopedingammadji@gmail.com</p>
               <p className="text-gray-400">Téléphone : +33 1 23 45 67 89</p>
               <p className="text-gray-400">Adresse : 123 Rue de la Tech, Paris, France</p>
               

@@ -28,7 +28,7 @@ const Header = () => {
   <NavLink to="/" className="flex items-center transition-opacity">
     <span className="inline-flex items-center space-x-2">
       <i className="fas fa-laptop-code text-sky-400 text-xl"></i>
-      <span className="text-2xl font-bold text-gray-400">HopeBusiness</span>
+      <span className="text-2xl font-bold text-gray-400">HopeBusi</span>
     </span>
   </NavLink>
 </div>
