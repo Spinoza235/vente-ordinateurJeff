@@ -24,15 +24,15 @@ const Header = () => {
     <header className="bg-gray-50 shadow-sm fixed w-full z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-          <NavLink to="/" className="flex items-center  transition-opacity">
-      <img 
-        src="/logo.png" 
-        alt="Logo de l'entreprise" 
-        className="h-12 w-auto" // Ajustez la taille selon vos besoins
-      />
-    </NavLink>
-          </div>
+         <div className="flex-shrink-0">
+  <NavLink to="/" className="flex items-center transition-opacity">
+    <span className="inline-flex items-center space-x-2">
+      <i className="fas fa-laptop-code text-sky-400 text-xl"></i>
+      <span className="text-2xl font-bold text-gray-400">HopeBusiness</span>
+    </span>
+  </NavLink>
+</div>
+
           <nav className="hidden lg:flex space-x-8 items-center">
             <NavLink 
               to="/" 
