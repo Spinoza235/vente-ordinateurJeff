@@ -11,12 +11,12 @@ const Footer = () => {
               {/* Logo texte avec icône */}
               <div className="inline-flex items-center space-x-2 mb-4">
                 <i className="fas fa-laptop-code text-sky-400 text-xl"></i>
-                <span className="text-2xl font-bold text-white">HopeBusiness</span>
+                <span className="text-2xl font-bold text-white">Jeff Computer</span>
               </div>
 
               <h2 className="text-lg text-sky-500/90 font-semibold">À propos</h2>
               <p className="mt-2 text-gray-200">
-                HopeBusiness est votre boutique en ligne spécialisée dans la vente d’ordinateurs portables et accessoires.
+                Jeff Computer est votre boutique en ligne spécialisée dans la vente d’ordinateurs portables et accessoires.
               </p>
             </div>
 

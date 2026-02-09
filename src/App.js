@@ -9,6 +9,7 @@ import Promotions from './components/Promotions';
 import CategoryPage from "./pages/CategoryPage";
 import AboutPage from "./pages/AboutPage";
 import ScrollToSection from "./components/ScrollToSection";
+import AdvancePage from "./pages/AdvancePage";
 
 function App() {
   return (
@@ -27,10 +28,11 @@ function App() {
               </>
             } />
 
-            {/* Page de contact */}
+            {/* Pages  */}
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/A-propos" element={<AboutPage />} />
             <Route path="/category/:category" element={<CategoryPage />} />
+            <Route path="/guide-achat" element={<AdvancePage />} />
           </Routes>
         </main>
         <Footer />

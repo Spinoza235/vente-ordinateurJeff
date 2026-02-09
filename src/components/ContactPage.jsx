@@ -41,7 +41,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-10 lg:py-32 p-3 md:p-5 lg:p-6 pb-16">
-      <div className="max-w-8xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="max-w-lg w-full">
         {/* Formulaire de contact */}
         <div className="bg-slate-700 rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-center font-bold mb-6 text-gray-600 dark:text-white">
@@ -84,7 +84,6 @@ export default function ContactPage() {
               {status}
             </p>
           )}
-
           <div className="mt-8 flex justify-around">
             <a
               href="https://wa.me/1234567890"
