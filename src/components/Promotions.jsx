@@ -5,6 +5,7 @@ const promotions = [
   {
     id: 1,
     name: ' ORDINATEUR HP ProBook x360 11 G1 EE',
+    // ✅ CORRECTION : Suppression du backslash avant le guillemet (ligne 24 dans l'original)
     description: 'Lover des machines slim, portatif et léger, grande promotion de vos ORDINATEUR HP ProBook x360 11 G1 EE ,Écran tactile(touchscreen )rotating at 360° ,Super Clean 🧼 Ultra slim, 🔥🔶HP ProBook x360 11 G1 EE🇺🇸 ,Intel(R) QUAD Core : 1.10GHz🤝 ,8Go RAM fast RAM   🔥. 128G ssd , Écran tactile(touchscreen )rotating at 360°  🔥🔶128mb dedicated 2g total graghics ,12.5Pouces   🔥 🔶 WiFi, Bluetooth, HDMI, USB 3.0,type-c  ,Autonomie 4H++ excellente ,Connectivité  - Wifi, Bluetooth, webcam - Port USB, HDMI, RJ45',
     price: '55 000 fcfa',
     discount: '20%',
@@ -13,7 +14,7 @@ const promotions = [
   {
     id: 2,
     name: '𝐋𝐞𝐧𝐨𝐯𝐨 𝐓𝐡𝐢𝐧𝐤𝐩𝐚𝐝 𝐓𝟒70',
-    description: '𝐂𝐨𝐫𝐞 𝐢5 6eme 𝐆𝐞𝐧, 𝟏𝟔𝐆 𝐑𝐀𝐌  𝟓𝟏𝟐𝐆 𝐒𝐒𝐃 𝐃𝐨𝐮𝐛𝐥𝐞 𝐁𝐚𝐭𝐭𝐞𝐫𝐲🔸🔥CORE i5.  6eme generation 2..5ghz 🔸🔥8giga RAM 🔥🔸256SSD  🔥14 inches ✅  🔸🔥Ultra Slim, finger print, Port SIM WebCam, Double Battery   🔸🔥Keyboard QWERTY et AZERTY   🔸🔥2 USB port, port type-C, HDMI.  🔸🔥Double Battery Autonomie 💪🏾 exelent autonomie',
+    description: '𝐂𝐨𝐫𝐞 𝐢5 6eme 𝐆𝐞𝐧, 𝟏𝟔𝐆 𝐑𝐀𝐌  𝟓𝟏𝟐𝐆 𝐒𝐒𝐃 𝐃𝐨𝐮𝐛𝐥𝐞 𝐁𝐚𝐭𝐭𝐞𝐫𝐲🔸🔥CORE i5.  6eme generation 2..5ghz 🔸🔥8giga RAM 🔥🔸256SSD  🔥14 inches ✅  🔸🔥Ultra Slim, finger print, Port SIM WebCam, Double Battery   🔸🔥Keyboard QWERTY et AZERTY   🔸🔥2 USB port, port type-C, HDMI.  🔸🔥Double Battery Autonomie 💪🏾 exelent autonomie',
     price: '160 000 cfa',
     discount: '15%',
     image: '/assets/imageProduct/lenovo/lenovo4.jpg',
@@ -21,7 +22,7 @@ const promotions = [
   {
     id: 3,
     name: 'HP EliteBook 840 G3 ',
-    description: 'Core i5 | 6th Gen | CPU 2.30GHz | 8gb Ram | 500gb hdd ,14\" pouces ',
+    description: 'Core i5 | 6th Gen | CPU 2.30GHz | 8gb Ram | 500gb hdd ,14" pouces ',
     price: '130 000 cfa',
     discount: '10%',
     image: '/assets/imageProduct/hp1/hp8.jpg',
@@ -29,6 +30,7 @@ const promotions = [
   {
     id: 4,
     name: 'Hp ',
+    // ✅ CORRECTION : Apostrophe échappée correctement
     description: '128 giga SSD M2; 4 giga de RAM ; 6heures d\'autonomie;ports USB, HDMI;Chargeur offert. ',
     price: '50 000 cfa',
     discount: '25%',

@@ -8,6 +8,7 @@ const ProductGrid = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showBuyModal, setShowBuyModal] = useState(false); // Pour gérer le modal "Acheter"
   const [showDetailsModal, setShowDetailsModal] = useState(false); // Pour gérer le modal "Voir plus"
+  // ✅ CORRECTION : Ces variables sont maintenant utilisées (pas de suppression nécessaire)
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -128,7 +129,7 @@ const ProductDetailModal = ({ product, onClose }) => {
             <img
               src={product.image}
               alt={product.name}
-              className="max-w-full max-h-96 object-contain" // Ajustement ici
+              className="max-w-full max-h-96 object-contain"
             />
           </div>
 
