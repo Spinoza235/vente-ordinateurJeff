@@ -1,140 +1,261 @@
 import React, { useState } from 'react';
-import ProductContactModal from './ProductContactModal'; // Import du modal
-
-const promotions = [
-  {
-    id: 1,
-    name: ' ORDINATEUR HP ProBook x360 11 G1 EE',
-    // ✅ CORRECTION : Suppression du backslash avant le guillemet (ligne 24 dans l'original)
-    description: 'Lover des machines slim, portatif et léger, grande promotion de vos ORDINATEUR HP ProBook x360 11 G1 EE ,Écran tactile(touchscreen )rotating at 360° ,Super Clean 🧼 Ultra slim, 🔥🔶HP ProBook x360 11 G1 EE🇺🇸 ,Intel(R) QUAD Core : 1.10GHz🤝 ,8Go RAM fast RAM   🔥. 128G ssd , Écran tactile(touchscreen )rotating at 360°  🔥🔶128mb dedicated 2g total graghics ,12.5Pouces   🔥 🔶 WiFi, Bluetooth, HDMI, USB 3.0,type-c  ,Autonomie 4H++ excellente ,Connectivité  - Wifi, Bluetooth, webcam - Port USB, HDMI, RJ45',
-    price: '55 000 fcfa',
-    discount: '20%',
-    image: '/assets/imageProduct/hp1/hp7.2.jpg',
-  },
-  {
-    id: 2,
-    name: '𝐋𝐞𝐧𝐨𝐯𝐨 𝐓𝐡𝐢𝐧𝐤𝐩𝐚𝐝 𝐓𝟒70',
-    description: '𝐂𝐨𝐫𝐞 𝐢5 6eme 𝐆𝐞𝐧, 𝟏𝟔𝐆 𝐑𝐀𝐌  𝟓𝟏𝟐𝐆 𝐒𝐒𝐃 𝐃𝐨𝐮𝐛𝐥𝐞 𝐁𝐚𝐭𝐭𝐞𝐫𝐲🔸🔥CORE i5.  6eme generation 2..5ghz 🔸🔥8giga RAM 🔥🔸256SSD  🔥14 inches ✅  🔸🔥Ultra Slim, finger print, Port SIM WebCam, Double Battery   🔸🔥Keyboard QWERTY et AZERTY   🔸🔥2 USB port, port type-C, HDMI.  🔸🔥Double Battery Autonomie 💪🏾 exelent autonomie',
-    price: '160 000 cfa',
-    discount: '15%',
-    image: '/assets/imageProduct/lenovo/lenovo4.jpg',
-  },
-  {
-    id: 3,
-    name: 'HP EliteBook 840 G3 ',
-    description: 'Core i5 | 6th Gen | CPU 2.30GHz | 8gb Ram | 500gb hdd ,14" pouces ',
-    price: '130 000 cfa',
-    discount: '10%',
-    image: '/assets/imageProduct/hp1/hp8.jpg',
-  },
-  {
-    id: 4,
-    name: 'Hp ',
-    // ✅ CORRECTION : Apostrophe échappée correctement
-    description: '128 giga SSD M2; 4 giga de RAM ; 6heures d\'autonomie;ports USB, HDMI;Chargeur offert. ',
-    price: '50 000 cfa',
-    discount: '25%',
-    image: '/assets/imageProduct/hp1/hp9.jpg',
-  },
-  {
-    id: 5,
-    name: 'Dell latitude',
-    description: 'Carte grahiphe Intel ,processeur 2.5 Ghz, 500 SSD, corei5,7 ieme generation',
-    price: '90 000 cfa',
-    discount: '30%',
-    image: '/assets/imageProduct/dell1/dell5.jpg',
-  },
-];
+import ProductContactModal from './ProductContactModal';
+import promotions from '../data/promotion';
+import { Cpu, HardDrive, Monitor, Zap, Package, Tag } from 'lucide-react';
 
 const Promotions = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [expanded, setExpanded] = useState({});
-
-  const toggleDescription = (id) => {
-    setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
+  const [showBuyModal, setShowBuyModal] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   return (
     <section id="promotions" className="py-12 bg-gradient-to-r from-purple-50 to-blue-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-          Promotions en Cours
-        </h2>
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">
+            Promotions en Cours
+          </h2>
+          <p className="text-gray-600">Profitez de nos offres exceptionnelles à durée limitée !</p>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {promotions.map((product) => {
-            const descriptionLimit = 120; // Limite de caractères pour afficher le bouton
-            const showToggleButton = product.description.length > descriptionLimit;
-
-            return (
-              <div
-                key={product.id}
-                className="bg-white rounded-lg shadow-xl overflow-hidden transform transition-transform duration-300 hover:scale-105 flex flex-col"
-              >
-                {/* Conteneur de l'image avec un ratio fixe */}
-                <div className="relative aspect-[4/3] w-full">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-2 right-2 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    -{product.discount}
-                  </div>
-                </div>
-
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {product.name}
-                  </h3>
-
-                  {/* Conteneur de la description avec hauteur fixe et scroll */}
-                  <div className="relative">
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ${
-                        expanded[product.id] ? "max-h-40 overflow-y-auto" : "max-h-16"
-                      }`}
-                    >
-                      <p className="text-gray-600">{product.description}</p>
-                    </div>
-
-                    {/* Affiche le bouton uniquement si la description est longue */}
-                    {showToggleButton && (
-                      <button
-                        onClick={() => toggleDescription(product.id)}
-                        className="text-sky-500 font-medium hover:underline mt-2"
-                      >
-                        {expanded[product.id] ? "Voir moins" : "Voir plus"}
-                      </button>
-                    )}
-                  </div>
-
-                  <div className="flex items-center justify-between mt-auto">
-                    <p className="text-lg font-bold text-sky-500/80">
-                      {product.price}
-                    </p>
-                    <button
-                      onClick={() => setSelectedProduct(product)}
-                      className="inline-block bg-sky-500/80 text-white px-6 py-2 rounded-md hover:bg-sky-500/90 transition-colors duration-300"
-                    >
-                      Acheter
-                    </button>
-                  </div>
+          {promotions.map((product) => (
+            <div
+              key={product.id}
+              className="bg-white rounded-lg shadow-xl overflow-hidden transform transition-transform duration-300 hover:scale-105 flex flex-col relative"
+            >
+              {/* Badge de réduction */}
+              <div className="absolute top-4 right-4 z-10">
+                <div className="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-1">
+                  <Tag className="w-4 h-4" />
+                  -{product.discount}
                 </div>
               </div>
-            );
-          })}
+
+              {/* Image */}
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  {product.name}
+                </h3>
+
+                {/* Quick specs preview */}
+                <div className="space-y-2 mb-4 flex-grow">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Cpu className="w-4 h-4 mr-2 text-purple-500" />
+                    <span className="truncate">{product.specs.processor}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Zap className="w-4 h-4 mr-2 text-purple-500" />
+                    <span>{product.specs.ram} | {product.specs.storage}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Monitor className="w-4 h-4 mr-2 text-purple-500" />
+                    <span className="truncate">{product.specs.screen}</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => {
+                    setSelectedProduct(product);
+                    setShowDetailsModal(true);
+                    setShowBuyModal(false);
+                  }}
+                  className="text-purple-600 hover:underline mb-3 text-left text-sm font-medium"
+                >
+                  Voir toutes les caractéristiques →
+                </button>
+
+                {/* Prix avec réduction */}
+                <div className="mb-4">
+                  <p className="text-2xl font-bold text-purple-600">
+                    {product.price}
+                  </p>
+                  <p className="text-xs text-gray-500">Prix promotionnel</p>
+                </div>
+
+                <button
+                  onClick={() => {
+                    setSelectedProduct(product);
+                    setShowBuyModal(true);
+                    setShowDetailsModal(false);
+                  }}
+                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-md hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-semibold shadow-md"
+                >
+                  Profiter de l'offre
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Affichage du modal si un produit est sélectionné */}
-      {selectedProduct && (
+      {/* Modal "Acheter" */}
+      {showBuyModal && selectedProduct && (
         <ProductContactModal
-          isOpen={!!selectedProduct}
-          onClose={() => setSelectedProduct(null)}
+          isOpen={showBuyModal}
+          onClose={() => {
+            setShowBuyModal(false);
+            setSelectedProduct(null);
+          }}
           product={selectedProduct}
         />
       )}
+
+      {/* Modal "Voir plus" */}
+      {showDetailsModal && selectedProduct && (
+        <PromotionDetailModal
+          product={selectedProduct}
+          onClose={() => {
+            setShowDetailsModal(false);
+            setSelectedProduct(null);
+          }}
+        />
+      )}
     </section>
+  );
+};
+
+const PromotionDetailModal = ({ product, onClose }) => {
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
+      <div className="bg-white rounded-lg shadow-2xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col">
+        {/* En-tête avec badge promo */}
+        <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-purple-50 to-blue-50 relative">
+          <div className="absolute top-4 right-4">
+            <div className="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-1">
+              <Tag className="w-4 h-4" />
+              -{product.discount}
+            </div>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 pr-24">{product.name}</h2>
+          <p className="text-sm text-gray-600 mt-1">Catégorie: {product.category.toUpperCase()}</p>
+          <div className="mt-2">
+            <span className="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold">
+              🔥 OFFRE LIMITÉE
+            </span>
+          </div>
+        </div>
+
+        {/* Contenu principal */}
+        <div className="flex-grow overflow-y-auto p-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Image */}
+            <div className="w-full rounded-lg overflow-hidden bg-gray-50 flex justify-center items-center p-4">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="max-w-full max-h-80 object-contain"
+              />
+            </div>
+
+            {/* Spécifications */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Caractéristiques techniques</h3>
+              
+              {/* Processeur */}
+              <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
+                <div className="flex items-start">
+                  <Cpu className="w-5 h-5 mr-3 text-purple-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Processeur</h4>
+                    <p className="text-gray-700 mt-1">{product.specs.processor}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* RAM */}
+              <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
+                <div className="flex items-start">
+                  <Zap className="w-5 h-5 mr-3 text-purple-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Mémoire RAM</h4>
+                    <p className="text-gray-700 mt-1">{product.specs.ram}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stockage */}
+              <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
+                <div className="flex items-start">
+                  <HardDrive className="w-5 h-5 mr-3 text-purple-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Stockage</h4>
+                    <p className="text-gray-700 mt-1">{product.specs.storage}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Écran */}
+              <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
+                <div className="flex items-start">
+                  <Monitor className="w-5 h-5 mr-3 text-purple-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Écran</h4>
+                    <p className="text-gray-700 mt-1">{product.specs.screen}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Carte graphique */}
+              <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
+                <div className="flex items-start">
+                  <Package className="w-5 h-5 mr-3 text-purple-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Carte Graphique</h4>
+                    <p className="text-gray-700 mt-1">{product.specs.graphics}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Fonctionnalités supplémentaires */}
+          {product.specs.features && product.specs.features.length > 0 && (
+            <div className="mt-6 border-t pt-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Fonctionnalités incluses</h3>
+              <div className="flex flex-wrap gap-2">
+                {product.specs.features.map((feature, index) => (
+                  <span
+                    key={index}
+                    className="bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium border border-purple-200"
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Pied de page */}
+        <div className="p-6 border-t border-gray-200 bg-gradient-to-r from-purple-50 to-blue-50">
+          <div className="flex justify-between items-center flex-wrap gap-4">
+            <div>
+              <p className="text-3xl font-bold text-purple-600">
+                {product.price}
+              </p>
+              <p className="text-sm text-gray-600 mt-1">
+                Économisez {product.discount} sur ce produit !
+              </p>
+            </div>
+            <button
+              onClick={onClose}
+              className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

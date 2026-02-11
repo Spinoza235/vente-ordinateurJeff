@@ -25,9 +25,13 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
          <div className="flex-shrink-0">
-<NavLink to="/" className="flex items-center transition-opacity">
-  <span className="inline-flex items-center space-x-1 sm:space-x-2">
-    <i className="fas fa-laptop-code text-sky-400 text-lg sm:text-xl"></i>
+<NavLink to="/" className="flex items-center transition-opacity hover:opacity-80">
+  <span className="inline-flex items-center space-x-2 sm:space-x-3">
+    {/* Image du logo */}
+    <img 
+      src="/logoJeff.png" 
+      alt="Jeff Computer Logo" 
+      className="h-8 w-8 sm:h-10 sm:w-10 object-contain"/>
     <span className="text-lg sm:text-2xl font-bold text-gray-700">Jeff Computer</span>
   </span>
 </NavLink>

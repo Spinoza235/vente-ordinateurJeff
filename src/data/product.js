@@ -1,132 +1,243 @@
 const products = [
   {
     id: 1,
-    name: 'Utra soft Dell latitude 3190l ',
+    name: 'Ultra soft Dell Latitude 3190L',
     category: 'dell',
-    description: 'processeur Intel quadCore 1.6 Ghz, 4GB DDR3 integre, Stockage SSD NVME 128GB , Carte graphique professionelle intel hd Graphic,Ecran 12.6 pouce et rotatif a 360 ,Wifi,Bluetooth ,HDMI,USB Type-A',
     price: "75 000 fcfa",
     image: '/assets/imageProduct/dell1/dell1.2.jpg',
+    specs: {
+      processor: 'Intel Quad Core 1.6 GHz',
+      ram: '4GB DDR3',
+      storage: '128GB SSD NVMe',
+      screen: '12.6" Rotatif 360°',
+      graphics: 'Intel HD Graphics',
+      features: ['Wifi', 'Bluetooth', 'HDMI', 'USB Type-A']
+    }
   },
   {
     id: 2,
-    name: 'Zbook Studio 15 G5',
+    name: 'HP Zbook Studio 15 G5',
     category: 'hp',
-    description: 'Processeur Intel® Core™ i7-8750H @ 2.2 GHz - 4.5 GHz Turbo Boost ( 12 CPUs) ,  ,16 GB DDR4- SDRAM ,1 TB PCIe Gen 4.0 x4 NVMe M.2 , Écran 15.6 Pouces,  4k  diagonal, éclairage adaptative  ,Carte graphique : Nvidia Quadro p1000 4GB dédié GDDR5  + Intel Xe Iris Graphics 128MB ,Deverouillage Faciale ( FaceID ) + Empreinte digitale ( Fingerprint Reader ) , Caméra 720p HD IR camera 📸  ,Audio by Bang & Olufsen, 3x USB 3.2 Gen 2 Type-C — 1x USB 3.2 Gen 1 Type-A — Headphones 🎧',
-    price: "175 00 fcfa",
+    price: "175 000 fcfa",
     image: '/assets/imageProduct/hp1/hp2.1.jpg',
+    specs: {
+      processor: 'Intel Core i7-8750H @ 2.2-4.5 GHz (12 CPUs)',
+      ram: '16 GB DDR4',
+      storage: '1 TB NVMe SSD PCIe Gen 4.0',
+      screen: '15.6" 4K avec éclairage adaptatif',
+      graphics: 'Nvidia Quadro P1000 4GB GDDR5 + Intel Iris Xe 128MB',
+      features: ['Face ID', 'Fingerprint Reader', 'Caméra 720p HD IR', 'Audio Bang & Olufsen', '3x USB-C 3.2', 'USB-A 3.2']
+    }
   },
   {
     id: 3,
-    name: 'Portable HP Elitebook 840 G5 i7 8th gen ',
+    name: 'HP Elitebook 840 G5',
     category: 'hp',
-    // ✅ CORRECTION ligne 54 : Suppression du backslash inutile devant l'apostrophe
-    description: 'Intel Core i7-8665U 2.1GHz up to 4.5 ghz @(8 CPUs) 8éme génération ,32Go extensible ,512Go  SSD NVME ultra rapide extensible ,WIndows 11 proffessionel , Écran 14" FHD Résolution 1920 x 1080 Px, Carte Graphique Intel Ultra HD Graphics 620, HDMI, USB 3.0 Type-A, USB Type-C, RJ45, Webcam, Wi-Fi, Bluetooth, Lecteur d\'empreinte , ',
     price: '185 000 fcfa',
     image: '/assets/imageProduct/hp1/hp1.1.jpg',
+    specs: {
+      processor: 'Intel Core i7-8665U @ 2.1-4.5 GHz (8 CPUs) - 8ème gen',
+      ram: '32GB DDR4 extensible',
+      storage: '512GB SSD NVMe ultra rapide extensible',
+      screen: '14" FHD (1920 x 1080)',
+      graphics: 'Intel UHD Graphics 620',
+      features: ['Windows 11 Pro', 'Lecteur d\'empreinte', 'Webcam', 'HDMI', 'USB 3.0', 'USB Type-C', 'RJ45', 'WiFi', 'Bluetooth']
+    }
   },
   {
     id: 4,
-    name: 'Lenovo Legion 5 15IMH05H Gaming Laptop',
+    name: 'Lenovo Legion 5 15IMH05H Gaming',
     category: 'lenovo',
-    description: 'Processeur AMD Ryzen 7 5800H (équivalent d\'un core I7 de 10th gen) with Radeon graphics @ 3.2 GHz ( 16 CPUs)  ,16GB RAM DDR4-3200 extensible ,Stockage : 512GB SSD Nvme ,Écran 15.6" UHD 4K IPS Display  ,Refresh rate 120 Hz ,Cartes graphique : Nvidia GeForce RTX 3060 4GB GDDR6/AMD Radeon graphics 2GB GDDR4 ,Keyboard RGB 4-zone ( US 🇺🇸 ) ,Ports: 4x USB 3.1 Gen 1 — 1x USB-C 3.1 Gen 2 —  LAN ( RJ-45 ) — WiFi 5.0 — Bluetooth 5.0',
     price: '550 000 fcfa',
     image: '/assets/imageProduct/legion/legion.jpg',
+    specs: {
+      processor: 'AMD Ryzen 7 5800H @ 3.2 GHz (16 CPUs)',
+      ram: '16GB DDR4-3200 extensible',
+      storage: '512GB SSD NVMe',
+      screen: '15.6" UHD 4K IPS - 120Hz',
+      graphics: 'Nvidia GeForce RTX 3060 6GB GDDR6 + AMD Radeon 2GB',
+      features: ['Clavier RGB 4-zones', '4x USB 3.1', 'USB-C 3.1', 'RJ-45', 'WiFi 5.0', 'Bluetooth 5.0']
+    }
   },
   {
     id: 5,
     name: 'Lenovo Thinkpad',
     category: 'lenovo',
-    description: 'Corei5 , 6 eme generation,256 SSD,8Go RAM, Ecran tactile ,processeur 2.1 Ghz, batterie durable 6h du temps',
-    price: '699 000 fcfa',
+    price: '140 000 fcfa',
     image: '/assets/imageProduct/lenovo/lenovo1.jpg',
+    specs: {
+      processor: 'Intel Core i5 6ème gen @ 2.1 GHz',
+      ram: '8GB DDR4',
+      storage: '256GB SSD',
+      screen: 'Écran tactile',
+      graphics: 'Intel HD Graphics',
+      features: ['Batterie 6h', 'WiFi', 'Bluetooth']
+    }
   },
   {
     id: 6,
     name: 'Ordinateur Portable Gaming MNO',
     category: 'apple',
-    description: 'Puissance et design pour les gamers.',
     price: '1 999 000 fcfa',
     image: '/assets/imageProduct/apple/apple1.1.jpg',
+    specs: {
+      processor: 'Processeur haute performance',
+      ram: 'RAM optimisée',
+      storage: 'Stockage SSD',
+      screen: 'Écran haute résolution',
+      graphics: 'Carte graphique dédiée',
+      features: ['Design premium', 'Performance gaming']
+    }
   },
   {
     id: 7,
-    name:'Dell latitude 7480 FHD',
+    name: 'Dell Latitude 7480 FHD',
     category: 'dell',
-    description: 'core i7 8ieme generation, Processeur 2.1Ghz, 16 Go RAM, 256 Go SSD, windows 11, Carte graphique Intel UHD 620, Ecran 14" FHD resolution 1920 x 1080 Px, webcam, wifi Bluetooth ',
-    price: '1 599 000 fcfa',
+    price: '170 000 fcfa',
     image: '/assets/imageProduct/lenovo/lenovo2.jpg',
+    specs: {
+      processor: 'Intel Core i7 8ème gen @ 2.1 GHz',
+      ram: '16GB DDR4',
+      storage: '256GB SSD',
+      screen: '14" FHD (1920 x 1080)',
+      graphics: 'Intel UHD Graphics 620',
+      features: ['Windows 11', 'Webcam', 'WiFi', 'Bluetooth']
+    }
   },
   {
     id: 8,
-    name: 'Dell 3180 Intel celeron 3060',
+    name: 'Dell 3180 Intel Celeron 3060',
     category: 'dell',
-    description: '128 giga SSD M2; 4 giga de RAM ; 6heures d\'autonomie;ports USB, HDMI;Chargeur offert. ',
     price: "60 000 fcfa",
     image: '/assets/imageProduct/dell1/dell2.3.jpg',
+    specs: {
+      processor: 'Intel Celeron 3060',
+      ram: '4GB DDR3',
+      storage: '128GB SSD M.2',
+      screen: 'Écran compact',
+      graphics: 'Intel HD Graphics',
+      features: ['Autonomie 6h', 'USB', 'HDMI', 'Chargeur offert']
+    }
   },
   {
     id: 9,
-    name: 'PORTABLE DELL G73420',
+    name: 'Dell G73420',
     category: 'dell',
-    description: 'INTEL CORE-I5 DE 11 ème  GÉNÉRATION⚡ et couplé  a 16Go de RAM , Processeur Intel core  i5 -1135G7 11eme génération 2.40 GHz  up 4.5Ghz ,16Go de RAM extensible ,stockage 256Go extensible ,Carte graphique Intel UHD Graphics ,ÉCRAN 14 POUCES FullHD ,Windows 11 professionnel 64 bits ,Port  Type C,  HDMI,  port  USB 3.0 Webcam WiFi Webcam',
     price: "180 000 fcfa",
     image: '/assets/imageProduct/dell1/dell4.1.jpg',
+    specs: {
+      processor: 'Intel Core i5-1135G7 11ème gen @ 2.4-4.5 GHz',
+      ram: '16GB DDR4 extensible',
+      storage: '256GB SSD extensible',
+      screen: '14" FullHD',
+      graphics: 'Intel UHD Graphics',
+      features: ['Windows 11 Pro 64 bits', 'USB Type-C', 'HDMI', 'USB 3.0', 'Webcam', 'WiFi']
+    }
   },
   {
     id: 10,
     name: 'Ordinateur Portable Bureautique XYZ',
     category: 'hp',
-    description: 'Léger et performant pour les professionnels.',
-    price: '1 399 000 fcfa',
+    price: '170 000 fcfa',
     image: '/assets/imageProduct/hp1/hp5.jpg',
+    specs: {
+      processor: 'Processeur performant',
+      ram: 'RAM suffisante',
+      storage: 'SSD rapide',
+      screen: 'Écran confortable',
+      graphics: 'Graphiques intégrés',
+      features: ['Léger', 'Professionnel', 'Portable']
+    }
   },
   {
     id: 11,
-    name: 'HP Elitebook 850 G8 Notebook PC',
+    name: 'HP Elitebook 850 G8',
     category: 'hp',
-    description: 'Intel core i5-1145G7 @2.60GHz (8CPUs) ,1th Generation   ♻🔥 16Go RAM pc4 ,512Go SSD   ♻🔥 Intel(R) Iris(R) graphics 128mb dédié 8Go total , pavé numérique ,15.6" screen display  ,finger print ,Battery 🔋 excellent, Windows 11 ,Webcam, Wi-Fi, Bluetooth HDMI type-c',
     price: "180 000 fcfa",
     image: '/assets/imageProduct/hp1/hp6.1.jpg',
+    specs: {
+      processor: 'Intel Core i5-1145G7 @ 2.60 GHz (8 CPUs) - 11ème gen',
+      ram: '16GB DDR4',
+      storage: '512GB SSD',
+      screen: '15.6" Display',
+      graphics: 'Intel Iris Graphics 128MB dédié (8GB total)',
+      features: ['Pavé numérique', 'Fingerprint', 'Batterie excellente', 'Windows 11', 'Webcam', 'WiFi', 'Bluetooth', 'HDMI', 'USB Type-C']
+    }
   },
   {
     id: 12,
-    name: 'Hp Zbook Firely 14 inch G8',
+    name: 'HP Zbook Firefly 14" G8',
     category: 'hp',
-    description: 'corei7 ,11th generation, 16Go RAM , 512Go SSD, 3.0 Ghz processeur,4Go Carte Graphique',
-    price: '1 399 000 fcfa',
+    price: '200 000 fcfa',
     image: '/assets/imageProduct/hp1/hp4.jpg',
+    specs: {
+      processor: 'Intel Core i7 11ème gen @ 3.0 GHz',
+      ram: '16GB DDR4',
+      storage: '512GB SSD',
+      screen: '14" Display',
+      graphics: 'Carte graphique 4GB dédiée',
+      features: ['WiFi', 'Bluetooth', 'Windows 11']
+    }
   },
   {
     id: 13,
-    name: 'LAPTOP APPLE MACBOOK PRO A1398',
+    name: 'Apple MacBook Pro A1398',
     category: 'apple',
-    description: 'CORE I7- 3635QM 2.4GHZ 16.0 GB de Ram et 260GB de Disque Dur WIFI 15.5″',
     price: "625 000 fcfa",
     image: '/assets/imageProduct/apple/apple3.jpg',
+    specs: {
+      processor: 'Intel Core i7-3635QM @ 2.4 GHz',
+      ram: '16GB DDR3',
+      storage: '256GB HDD',
+      screen: '15.5" Retina',
+      graphics: 'Intel HD Graphics',
+      features: ['WiFi', 'macOS', 'Design premium']
+    }
   },
   {
     id: 14,
-    name: 'LAPTOP APPLE MACBOOK PRO A1398',
+    name: 'Microsoft Surface Pro',
     category: 'surface',
-    description: 'CORE I7- 3635QM 2.4GHZ 16.0 GB de Ram et 260GB de Disque Dur WIFI 15.5″',
     price: "200 000 fcfa",
     image: '/assets/imageProduct/surface/surface1.jpg',
+    specs: {
+      processor: 'Intel Core i7 @ 2.4 GHz',
+      ram: '16GB DDR3',
+      storage: '256GB SSD',
+      screen: '15.5" Tactile',
+      graphics: 'Intel HD Graphics',
+      features: ['WiFi', 'Écran détachable', '2-en-1']
+    }
   },
   {
     id: 15,
-    name: 'HP Zbook 15 G3 workstation ',
+    name: 'HP Zbook 15 G3 Workstation',
     category: 'hp',
-    description: ' Intel XEON couplé à 32GB Ram et une carte graphique professionnelle avec 4GB dédié NVIDIA Quadro M2000M ,INTEL Xeon E3-150M v5 , Processor : 2.80GHz ~4.0GHz (8CPUs) ,32Go RAM pc4 , 512Go SSD ,Intel HD graphics P530 128mb dédié 8Go total ,Carte Graphique NVIDIA Quadro M2000M 4GO Dédié GDDR 20Go Total, Clavier lumineux , 15.5" pouces pavé numérique ,2 port type-C , Port USB, HDMI bluetooth , WiFi, Windows 10/11 pro, État 10/10 👍',
     price: "230 000 fcfa",
     image: '/assets/imageProduct/hp1/hp10.jpg',
+    specs: {
+      processor: 'Intel Xeon E3-1505M v5 @ 2.8-4.0 GHz (8 CPUs)',
+      ram: '32GB DDR4',
+      storage: '512GB SSD',
+      screen: '15.6" avec pavé numérique',
+      graphics: 'Nvidia Quadro M2000M 4GB GDDR5 + Intel HD P530 128MB (20GB total)',
+      features: ['Clavier rétro-éclairé', '2x USB Type-C', 'HDMI', 'Bluetooth', 'WiFi', 'Windows 10/11 Pro', 'État 10/10']
+    }
   },
   {
     id: 16,
-    name: 'DELL LATITUDE',
-    category: 'hp',
-    description: 'Core-i5 couplé à 16G ram 7ieme génération, 2 Go dédié Nvidia 930 MX, 16 Go RAM ; CPU : 2.80Ghz, Stockage : 256 Go SSD extensible, Clavier rétro-éclairé, Écran 14 pouce, Port carte sim, Port réseau, port HDMI, port USB.',
+    name: 'Dell Latitude Gaming Edition',
+    category: 'dell',
     price: "140 000 fcfa",
     image: '/assets/imageProduct/dell1/dell6.jpg',
+    specs: {
+      processor: 'Intel Core i5 7ème gen @ 2.8 GHz',
+      ram: '16GB DDR4',
+      storage: '256GB SSD extensible',
+      screen: '14" Display',
+      graphics: 'Nvidia GeForce 930MX 2GB dédié',
+      features: ['Clavier rétro-éclairé', 'Port carte SIM', 'RJ45', 'HDMI', 'USB']
+    }
   }
 ];
 

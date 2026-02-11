@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import ProductContactModal from './ProductContactModal'; // Assurez-vous que ce composant existe
-import products from '../data/product'; // Importation des produits
+import ProductContactModal from './ProductContactModal';
+import products from '../data/product';
+import { Cpu, HardDrive, Monitor, Zap, Package } from 'lucide-react';
 
 const ProductGrid = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 8;
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [showBuyModal, setShowBuyModal] = useState(false); // Pour gérer le modal "Acheter"
-  const [showDetailsModal, setShowDetailsModal] = useState(false); // Pour gérer le modal "Voir plus"
-  // ✅ CORRECTION : Ces variables sont maintenant utilisées (pas de suppression nécessaire)
+  const [showBuyModal, setShowBuyModal] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -32,36 +32,48 @@ const ProductGrid = () => {
                 />
               </div>
               <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   {product.name}
                 </h3>
-                <p className="text-gray-600 flex-grow">
-                  {product.description.length > 100
-                    ? product.description.substring(0, 100) + "..."
-                    : product.description}
-                </p>
-                {product.description.length > 100 && (
-                  <button
-                    onClick={() => {
-                      setSelectedProduct(product);
-                      setShowDetailsModal(true); // Ouvrir le modal "Voir plus"
-                      setShowBuyModal(false); // Fermer le modal "Acheter"
-                    }}
-                    className="text-sky-500 hover:underline mt-2"
-                  >
-                    Voir plus
-                  </button>
-                )}
-                <p className="text-lg font-bold text-sky-500/80 mb-4 mt-2">
-                  {product.price}
-                </p>
+                
+                {/* Quick specs preview */}
+                <div className="space-y-2 mb-4 flex-grow">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Cpu className="w-4 h-4 mr-2 text-sky-500" />
+                    <span className="truncate">{product.specs.processor}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Zap className="w-4 h-4 mr-2 text-sky-500" />
+                    <span>{product.specs.ram} | {product.specs.storage}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Monitor className="w-4 h-4 mr-2 text-sky-500" />
+                    <span className="truncate">{product.specs.screen}</span>
+                  </div>
+                </div>
+
                 <button
                   onClick={() => {
                     setSelectedProduct(product);
-                    setShowBuyModal(true); // Ouvrir le modal "Acheter"
-                    setShowDetailsModal(false); // Fermer le modal "Voir plus"
+                    setShowDetailsModal(true);
+                    setShowBuyModal(false);
                   }}
-                  className="inline-block bg-sky-500/80 text-white px-6 py-2 rounded-md hover:bg-sky-500/90 transition-colors duration-300"
+                  className="text-sky-500 hover:underline mb-3 text-left text-sm font-medium"
+                >
+                  Voir toutes les caractéristiques →
+                </button>
+
+                <p className="text-lg font-bold text-sky-500/80 mb-4">
+                  {product.price}
+                </p>
+                
+                <button
+                  onClick={() => {
+                    setSelectedProduct(product);
+                    setShowBuyModal(true);
+                    setShowDetailsModal(false);
+                  }}
+                  className="w-full bg-sky-500/80 text-white px-6 py-2 rounded-md hover:bg-sky-500/90 transition-colors duration-300"
                 >
                   Acheter
                 </button>
@@ -92,8 +104,8 @@ const ProductGrid = () => {
         <ProductContactModal
           isOpen={showBuyModal}
           onClose={() => {
-            setShowBuyModal(false); // Fermer le modal "Acheter"
-            setSelectedProduct(null); // Réinitialiser le produit sélectionné
+            setShowBuyModal(false);
+            setSelectedProduct(null);
           }}
           product={selectedProduct}
         />
@@ -104,8 +116,8 @@ const ProductGrid = () => {
         <ProductDetailModal
           product={selectedProduct}
           onClose={() => {
-            setShowDetailsModal(false); // Fermer le modal "Voir plus"
-            setSelectedProduct(null); // Réinitialiser le produit sélectionné
+            setShowDetailsModal(false);
+            setSelectedProduct(null);
           }}
         />
       )}
@@ -116,33 +128,108 @@ const ProductGrid = () => {
 const ProductDetailModal = ({ product, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-2xl overflow-hidden max-w-2xl w-full lg:mx-4 max-h-[90vh] flex flex-col transform transition-all duration-300 ease-in-out scale-95 hover:scale-100">
-        {/* En-tête du modal */}
-        <div className="p-6 border-b border-gray-200">
+      <div className="bg-white rounded-lg shadow-2xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col">
+        {/* En-tête */}
+        <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-sky-50 to-blue-50">
           <h2 className="text-3xl font-bold text-gray-900">{product.name}</h2>
+          <p className="text-sm text-gray-600 mt-1">Catégorie: {product.category.toUpperCase()}</p>
         </div>
 
-        {/* Contenu principal avec image et description */}
+        {/* Contenu principal */}
         <div className="flex-grow overflow-y-auto p-6">
-          {/* Conteneur de l'image */}
-          <div className="w-full mb-6 rounded-lg overflow-hidden flex justify-center items-center">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="max-w-full max-h-96 object-contain"
-            />
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Image */}
+            <div className="w-full rounded-lg overflow-hidden bg-gray-50 flex justify-center items-center p-4">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="max-w-full max-h-80 object-contain"
+              />
+            </div>
+
+            {/* Spécifications */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Caractéristiques techniques</h3>
+              
+              {/* Processeur */}
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <div className="flex items-start">
+                  <Cpu className="w-5 h-5 mr-3 text-sky-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Processeur</h4>
+                    <p className="text-gray-700 mt-1">{product.specs.processor}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* RAM */}
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <div className="flex items-start">
+                  <Zap className="w-5 h-5 mr-3 text-sky-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Mémoire RAM</h4>
+                    <p className="text-gray-700 mt-1">{product.specs.ram}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stockage */}
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <div className="flex items-start">
+                  <HardDrive className="w-5 h-5 mr-3 text-sky-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Stockage</h4>
+                    <p className="text-gray-700 mt-1">{product.specs.storage}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Écran */}
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <div className="flex items-start">
+                  <Monitor className="w-5 h-5 mr-3 text-sky-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Écran</h4>
+                    <p className="text-gray-700 mt-1">{product.specs.screen}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Carte graphique */}
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <div className="flex items-start">
+                  <Package className="w-5 h-5 mr-3 text-sky-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">Carte Graphique</h4>
+                    <p className="text-gray-700 mt-1">{product.specs.graphics}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Description du produit */}
-          <p className="text-gray-700 text-lg leading-relaxed">
-            {product.description}
-          </p>
+          {/* Fonctionnalités supplémentaires */}
+          {product.specs.features && product.specs.features.length > 0 && (
+            <div className="mt-6 border-t pt-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Fonctionnalités</h3>
+              <div className="flex flex-wrap gap-2">
+                {product.specs.features.map((feature, index) => (
+                  <span
+                    key={index}
+                    className="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-medium"
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Pied de page avec prix et bouton Fermer */}
-        <div className="p-6 border-t border-gray-200">
+        {/* Pied de page */}
+        <div className="p-6 border-t border-gray-200 bg-gray-50">
           <div className="flex justify-between items-center">
-            <p className="text-2xl font-bold text-sky-500/80">
+            <p className="text-3xl font-bold text-sky-500/80">
               {product.price}
             </p>
             <button

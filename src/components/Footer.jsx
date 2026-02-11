@@ -38,8 +38,8 @@ const Footer = () => {
             <div>
               <h2 className="text-lg font-semibold text-sky-500/90">Contact</h2>
               <p className="mt-2 text-gray-400">Email : hopedingammadji@gmail.com</p>
-              <p className="text-gray-400">Téléphone : +33 1 23 45 67 89</p>
-              <p className="text-gray-400">Adresse : 123 Rue de la Tech, Paris, France</p>
+              <p className="text-gray-400">Téléphone : +237 6 86 36 23 76</p>
+              <p className="text-gray-400">Adresse : En face de etages komeni ou en face de institut leadership </p>
 
               {/* Réseaux sociaux */}
               {/* ✅ CORRECTION : Remplacé href="#" par href="#top" et ajouté rel/target pour éviter l'erreur jsx-a11y/anchor-is-valid */}
