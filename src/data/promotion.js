@@ -7,12 +7,12 @@ const promotions = [
     discount: '20%',
     image: '/assets/imageProduct/lenovo/lenovo5.jpg',
     specs: {
-      processor: 'Corei5 6 gen ',
-      ram: '8GB',
+      processor: 'Intel Core i5 6ème gen',
+      ram: '8GB DDR4',
       storage: '256GB SSD',
-      screen: '13.9" ',
+      screen: '13.9" Display',
       graphics: 'Intel HD Graphics',
-      features: ['Ultra slim', 'WiFi', 'Bluetooth', 'HDMI', 'USB 3.0','Autonomie 4h+', 'Webcam']
+      features: ['Ultra slim', 'WiFi', 'Bluetooth', 'HDMI', 'USB 3.0', 'Autonomie 4h+', 'Webcam']
     }
   },
   {
@@ -79,7 +79,7 @@ const promotions = [
       features: ['WiFi', 'Bluetooth', 'Design professionnel', 'Durable']
     }
   },
-   {
+  {
     id: 6,
     name: 'HP PROBOOK 11 X360 G4 EE',
     category: 'hp',
@@ -87,12 +87,12 @@ const promotions = [
     discount: '30%',
     image: '/assets/imageProduct/hp1/hp11.jpg',
     specs: {
-      processor: 'Core i5 8eme Gen',
+      processor: 'Intel Core i5 8ème gen',
       ram: '8GB RAM extensible',
       storage: '256GB SSD',
       screen: '11.6" Display',
-      graphics: '128 Mo dedie Intel UHD ,couplage a 4G de total de graphique',
-      features: ['WiFi', 'camera', 'HDMI', 'Durable', 'Ecran Tactile']
+      graphics: '128 Mo dédié Intel UHD (4GB total)',
+      features: ['WiFi', 'Caméra', 'HDMI', 'Durable', 'Écran Tactile']
     }
   }
 ];

@@ -1,41 +1,60 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom'; // Utiliser NavLink au lieu de Link
+import { NavLink } from 'react-router-dom';
 import { Search } from 'lucide-react';
-import products from '../data/product'; // Importer le tableau de produits
+import products from '../data/product';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(""); // État pour la recherche
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleCategoriesHover = (open) => {
     setIsCategoriesOpen(open);
   };
 
-  // Filtrer les produits en fonction du terme de recherche
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    product.price.toString().includes(searchTerm) ||
-    product.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Filtrer les produits avec vérification des valeurs undefined/null
+  const filteredProducts = products.filter((product) => {
+    const searchLower = searchTerm.toLowerCase();
+    
+    // Vérifier chaque propriété avant d'appeler toLowerCase()
+    const nameMatch = product.name?.toLowerCase().includes(searchLower) || false;
+    const categoryMatch = product.category?.toLowerCase().includes(searchLower) || false;
+    const priceMatch = product.price?.toString().includes(searchTerm) || false;
+    
+    // Pour la description, vérifier si specs existe
+    let descriptionMatch = false;
+    if (product.description) {
+      descriptionMatch = product.description.toLowerCase().includes(searchLower);
+    } else if (product.specs) {
+      // Rechercher dans les specs si description n'existe pas
+      descriptionMatch = 
+        product.specs.processor?.toLowerCase().includes(searchLower) ||
+        product.specs.ram?.toLowerCase().includes(searchLower) ||
+        product.specs.storage?.toLowerCase().includes(searchLower) ||
+        product.specs.graphics?.toLowerCase().includes(searchLower) ||
+        false;
+    }
+    
+    return nameMatch || categoryMatch || priceMatch || descriptionMatch;
+  });
 
   return (
     <header className="bg-gray-100 shadow-sm fixed w-full z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-         <div className="flex-shrink-0">
-<NavLink to="/" className="flex items-center transition-opacity hover:opacity-80">
-  <span className="inline-flex items-center space-x-2 sm:space-x-3">
-    {/* Image du logo */}
-    <img 
-      src="/logoJeff.png" 
-      alt="Jeff Computer Logo" 
-      className="h-8 w-8 sm:h-10 sm:w-10 object-contain"/>
-    <span className="text-lg sm:text-2xl font-bold text-gray-700">Jeff Computer</span>
-  </span>
-</NavLink>
-</div>
+          <div className="flex-shrink-0">
+            <NavLink to="/" className="flex items-center transition-opacity hover:opacity-80">
+              <span className="inline-flex items-center space-x-2 sm:space-x-3">
+                {/* Image du logo */}
+                <img 
+                  src="/logoJeff.png" 
+                  alt="Jeff Computer Logo" 
+                  className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
+                />
+                <span className="text-lg sm:text-2xl font-bold text-gray-700">Jeff Computer</span>
+              </span>
+            </NavLink>
+          </div>
 
           <nav className="hidden lg:flex space-x-8 items-center">
             <NavLink 
@@ -156,10 +175,10 @@ const Header = () => {
                           />
                           <div className="flex-1 min-w-0">
                             <p className="text-gray-800 font-medium truncate">{product.name}</p>
-                            <p className="text-sm text-gray-500">{product.category}</p>
+                            <p className="text-sm text-gray-500 capitalize">{product.category}</p>
                           </div>
                           <span className="text-sky-600 font-semibold flex-shrink-0">
-                            {product.price} FCFA
+                            {product.price}
                           </span>
                         </NavLink>
                       </li>
